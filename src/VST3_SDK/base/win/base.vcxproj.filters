@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\baseiids.cpp" />
+    <ClCompile Include="..\source\fbuffer.cpp" />
+    <ClCompile Include="..\source\fdebug.cpp" />
+    <ClCompile Include="..\source\fdynlib.cpp" />
+    <ClCompile Include="..\source\fobject.cpp" />
+    <ClCompile Include="..\source\fstreamer.cpp" />
+    <ClCompile Include="..\source\fstring.cpp" />
+    <ClCompile Include="..\source\timer.cpp" />
+    <ClCompile Include="..\source\updatehandler.cpp" />
+    <ClCompile Include="..\thread\source\fcondition.cpp" />
+    <ClCompile Include="..\thread\source\flock.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\classfactoryhelpers.h" />
+    <ClInclude Include="..\source\fbuffer.h" />
+    <ClInclude Include="..\source\fcleanup.h" />
+    <ClInclude Include="..\source\fcommandline.h" />
+    <ClInclude Include="..\source\fdebug.h" />
+    <ClInclude Include="..\source\fdynlib.h" />
+    <ClInclude Include="..\source\fobject.h" />
+    <ClInclude Include="..\source\fstdmethods.h" />
+    <ClInclude Include="..\source\fstreamer.h" />
+    <ClInclude Include="..\source\fstring.h" />
+    <ClInclude Include="..\source\hexbinary.h" />
+    <ClInclude Include="..\source\timer.h" />
+    <ClInclude Include="..\source\updatehandler.h" />
+  </ItemGroup>
+</Project>
