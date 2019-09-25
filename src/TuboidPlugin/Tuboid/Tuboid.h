@@ -60,6 +60,8 @@ private:
 
   IGraphics* mpGraphics;
 
+  void CreatePresets();
+
   void MakeMapUsingTuboidAlgorithm();
 
   std::string FormatDouble(const double value, char* fmt);

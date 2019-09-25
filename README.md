@@ -27,19 +27,53 @@ Tuboid Algorithm Copyright © 2008 Tom Rutt
 
 _(To be added: Document deployment of VST 3 plug-in.)
 
-### Compatible audit editing software: Bitwig Studio 3
+### Compatible audit editing software: Reaper
 
-This product is able to host VST 3 plug-ins.
+This product is able to host VST 3 plug-ins, as well as VST 2 plug-ins.
 
-This product can be downloaded for free and run in _Demo Mode_ without requiring a license; in this mode saving and exporting are disabled.
+This product can be downloaded for free and allows a 60 day free trial.
+A personal-use license can be purchased for $60.
+Pending receipt of the license key, the software fully functions, but with a license warning notice.
 
-**<https://www.bitwig.com/en/home.html>**
+**<https://www.reaper.fm/>**
 
-**<https://www.bitwig.com/en/download.html>**
-
-### Using the Tuboid plug-in within Bitwig Studio
+### Using the Tuboid plug-in within Reaper
 
 _(to be added)_
+
+
+### Free harmonica instrument plug-in
+
+<https://www.dskmusic.com/dsk-harmonica/>
+
+<http://freevst.org/instruments/harmonica/>
+
+<http://files.freevst.org/DSK_Harmonica.zip>
+
+
+### Various free instrument plug-ins
+
+<http://www.vst4free.com/index.php?plug-ins=Guitar/Bass&l=0>
+
+
+## Free MIDI files
+
+<https://cymatics.fm/blogs/production/midi-files>
+
+
+## Other guitar amp simulation software
+
+<https://www.musicianonamission.com/guitar-amp-simulators-vs-real/>
+
+<https://theproaudiofiles.com/best-amp-simulator-plugins/>
+
+<https://www.soundshockaudio.com/amp-simulator/>
+
+**<https://www.guitarworld.com/gear/guitar-amp-simulators-better-real-amps>
+<https://www.youtube.com/watch?v=GQvfVaHyHeE>**
+
+<https://www.guitarfella.com/free-and-paid-guitar-amp-simulators/>
+
 
 ## Development Enviromment
 
