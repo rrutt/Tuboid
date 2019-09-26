@@ -24,9 +24,9 @@
 #include "resource.h"
 #include <string>
 
-const int kNumPrograms = 6;  // Number of MakePreset calls.
-
 const double kLogarithmConstant = 588.0;
+
+const int kNumPrograms = 7;  // Number of MakePreset calls.
 
 const double kDefaultGain = 411.0;
 const double kDefaultSquashPositive = 0.0;
@@ -198,6 +198,7 @@ Tuboid::~Tuboid() {}
 
 void Tuboid::CreatePresets() {
 	MakePreset("warm", kDefaultGain, kDefaultSquashPositive, kDefaultSquashNegative, kDefaultThresholdPositive, kDefaultThresholdNegative);
+	MakePreset("cool", 177.0, 280.5, 0.0, 0.301, 0.696);
 	MakePreset("clean", 0.0, 0.0, 0.0, 1.0, 1.0);
 	MakePreset("mild", 250.0, 500.0, 500.0, 0.5, 0.5);
 	MakePreset("moderate", 500.0, 500.0, 500.0, 0.5, 0.5);
