@@ -152,6 +152,10 @@ The **clips** folder also contains some triangular waveform audio files that can
 
 ![Triangular Waveform Signals](img/Triangular-waveform-signals.png?raw=true "Triangular Waveform Signals")
 
+Here we see the resulting audio waveforms when the triangular-waveform signals are processed through the default Tuboid parameter settings:
+
+![Triangular Waveforms Processed](img/Triangle-waveforms-processed.png?raw=true "Triangular Waveforms Processed")
+
 
 #### Various free instrument plug-ins
 
