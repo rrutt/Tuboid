@@ -1,5 +1,5 @@
 /*
-    Copyright © 2019 Rick Rutt
+	Copyright © 2019 Rick Rutt
 	Tuboid Algorithm Copyright © 2008 Tom Rutt
 
 	This file is part of Tuboid.

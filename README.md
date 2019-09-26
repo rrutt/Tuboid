@@ -1,8 +1,14 @@
-# Tuboid
+# Tuboid - Vacuum Tube Guitar Amp Effect Plug-In for Digital Audio Workstation Software
 
 ## Introduction
 
-The **Tuboid** plug-in is a VST 3 audio filter plug-in, which is a software implementation of an _Over-Threshold Power Function_ (OTPF) feedback  distortion synthesizer.
+**Tuboid** emulates the non-linear _soft limiting_ distortion sound of a vacuum tube guitar amplifier.
+
+**Tuboid** is implemented as a VST 3 plug-in for use with various Digital Audio Workstation (DAW) software products running on Microsoft Windows.
+
+## Summary
+
+The **Tuboid** plug-in is a software implementation of an _Over-Threshold Power Function_ (OTPF) feedback  distortion synthesizer.
 **_Nonlinear distortion synthesizer using over-threshold power-function feedback_** is the title of US Patent 4,710,727 (December 1, 1987, Inventor Thomas E. Rutt, now abandoned), available in the **doc** sub-folder of this repository as **[USPatent-4710727-abandoned.pdf](./doc/USPatent-4710727-abandoned.pdf)**
 
 OTPF feedback closely emulates the soft limiting input/output response characteristics of vacuum tube triode grid limit distortion, as described in **_Vacuum Tube Triode Nonlinearity as Part of The Electric Guitar Sound_**, T. E. Rutt, Presented at the 76th Convention of Audio Engineering Society  October 8-11, 1984, New York (Preprint 2141 F-5), available in the **doc** sub-folder of this repository as **[AESPaper-1.pdf](./doc/AESPaper-1.pdf)**
@@ -103,6 +109,31 @@ Here are alternate settings that provide a "cool" guitar distortion:
 
 ![Tuboid settings cool](img/Tuboid-settings-cool.png?raw=true "Tuboid settings cool")
 
+#### Explanation of Tuboid Configuration Parameters
+
+Tuboid emulates the following vacuum tube circuit found in the pre-amplifier stage of many vintage guitar amplifiers:
+
+![Triode cathode follower circuit](img/Triode-cathode-follower-circuit.png?raw=true "Triode cathode follower circuit")
+
+The triode vacuum tube to the lower left of the diagram is the primary amplification element.
+
+The triode vacumm tube to the upper right of the diagram provides _negative feedback_ to the input signal when the primary amplifier tube is reaching its voltage saturation level.
+
+This negative feedback partially reduces the input signal to prevent the output signal from being _hard limited_ (clipped).
+This effected is known as _soft limiting_.
+
+The effect of this negative feedback voltage is typically stronger for the positive voltage side of the input audio signal than for the negative voltage side.
+
+Analysis of this positive vs. negative asymmetry reveals a distortion effect that contains more _even harmonics_ (overtones) than _odd harmonics_ which would occur with a symmetric feedback circuit.
+Even harmonics provide a more pleasing audio effect than odd harmonics.
+
+The Tuboid configuration parameters relate to the feedback aspects of this circuit as follows:
+
+- **Gain**: This parameter controls how much of the output from the primary amplification triode feeds into the secondary feedback triode (the _cathode follower_).  Set it to 0.0 to suppress all negative feedback effect.
+- **Threshold**: These two parameters control what voltage level from the primary amplification triode must be exceeded in order to trigger the secondary feedback triode to provide a reduction in the input voltage.  The values can be set separately for the positive vs. the negative voltage portions of the audio waveform.
+- **Squash**: These two parameters allow for control of the degree of negative feedback voltage from the secondary feedback triode used to reduce the input signal voltage into the primary amplifier triode.  The values can be set separately for the positive vs. the negative voltage portions of the audio waveform.
+
+
 #### Test audio clips
 
 The **clips** sub-folder in this GitHub project contains some WAV file audio files containing some guitar licks played on a Fender Stratocaster.
@@ -116,7 +147,7 @@ Load one of these files into REAPER to use as a signal source for experimenting 
 The **clips** folder also contains some triangular waveform audio files that can be used to more abstractly evaluate the Tuboid effect:
 
 - **100tri.wav** contains a simple triangular waveform.
-- **tri100-1100.wav** contains a triangular waveform with a high-frequency sine-wave modulation signal.
+- **tri100-1100.wav** contains a triangular waveform with a high-frequency sine-wave modulation signal.  By using a _soft limiting_ approach, rather than a _hard limiting_ (clipping) approach to high audio input levels, the Tuboid effect is able to preserve the sine-wave modulation present in the input signal and pass it through to the output signal.
 - **tru100-1100.wav** contain a low-frequency triangular waveform in the left channel and a high-frequency triangular waveform in the right channel.
 
 ![Triangular Waveform Signals](img/Triangular-waveform-signals.png?raw=true "Triangular Waveform Signals")
@@ -170,12 +201,39 @@ Here are some other approaches to emulation or simulation of vacuum tube guitar 
 
 ### IPlug Implementation Notes
 
+Thus tutorial was used to create the Visual Studio solution framework for the **Tuboid** project.
+
 **<http://www.martin-finke.de/blog/articles/audio-plugins-001-introduction/>**
 
 **_Note:_** When following this tutorial for creation of a VST 3 plug-in, a minor change needs to be performed to match the current version of the VST 3 SDK.
 Add the following file reference to the **MyFirstPlugin-vst3.vcsproj** project within Visual Studio at the **vst3\VST3_SDK\public.sdk\source\common** folder location in the Solution Explorer:
 
     ..\wdl-ol\VST3_SDK\public.sdk\source\common\commoniids.cpp
+
+### Building Tuboid from the Source Code
+
+The Visual Studio solution file resides in the **src** sub-folder as **Tuboid.sln**
+This solution file contains a **Tuboid-app** sub-project and the **Tuboid-vst3** sub-project.
+
+The **Tuboid-app** sub-project acts as a standalone host for the Tuboid plug-in.
+Run this project within Visual Studio to debug the startup logic for the Tuboid plug-in and to test or debug the logic that reacts to changes in the parameter sliders.
+
+The post-build steps for the **Tuboid-vst** sub-project include copying the resulting DLL file (named as **Tuboid.vst3**) to the standard system folder **C:\\Program Files (x86)\\Common Files\\VST3**
+
+Since this is a protected folder tree, this step only succeeds if you start Visual Studio via the **Run as administrator** option by right-clicking on the Visual Studio Start menu item (or desktop icon). 
+
+#### VST 2 support
+
+A separate solution file **Tuboid-with-vst2.sln** also includes a **Tuboid-vst2** sub-project.
+This solution allows you to build a VST 2 version of the plug-in, provided you obtained a VST 2 SDK license from Steinberg Media Technologies GmbH prior to October, 2018.
+(Steinberg is retiring the VST 2 technology and no longer licenses development and VST 2 plug-in distribution except for developers that obtained licenses as of that date.)
+
+If you have an existing license for the VST 2 SDK you can use this **Tuboid-with-vst2.sln** solution file after copying the following two files from the VST2 SDK to the **src\\VST_SDK** sub-folder:
+
+- **aeffect.h**
+- **aeffectx.h**
+
+
 
 ## Additional Documentation
 
