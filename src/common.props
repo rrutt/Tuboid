@@ -12,8 +12,8 @@
     <x64_LIB_PATHS>$(ProgramW6432)\Microsoft SDKs\Windows\v7.1\Lib\x64;$(ProgramFiles)\Microsoft SDKs\Windows\v7.1\Lib\x64</x64_LIB_PATHS>
     <RTAS_PLUGINS_PATH>$(ProgramFiles)\Avid\ProTools_3PDev\dae\Plug-Ins</RTAS_PLUGINS_PATH>
     <AAX_PLUGINS_PATH>$(ProgramFiles)\Avid\ProTools_3PDev\dae\Plug-Ins</AAX_PLUGINS_PATH>
-    <VST2_32_PATH>$(CommonProgramFiles)\VSTPlugins</VST2_32_PATH>
-    <VST2_64_PATH>$(CommonProgramW6432)\VSTPlugins</VST2_64_PATH>
+    <VST2_32_PATH>$(ProgramFiles)\Steinberg\VstPlugins</VST2_32_PATH>
+    <VST2_64_PATH>$(ProgramW6432)\Steinberg\VstPlugins</VST2_64_PATH>
     <COPY_VST2>0</COPY_VST2>
   </PropertyGroup>
   <PropertyGroup>
