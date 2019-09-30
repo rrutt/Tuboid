@@ -31,6 +31,8 @@ Tuboid Algorithm Copyright © 2008 Tom Rutt
 
 ### Deployment
 
+These steps are for the 32-bit Windows version of the **Tuboid** plug-in.
+
 - Download the **[Tuboid-setup.zip](./Tuboid-setup.zip)** file from this GitHub project.
 - Open the folder where you saved the ZIP in Windows file Explorer.
 - Right-click the **Tuboid-setup.zip** file and select **Extract All...** from the pop-up menu.  Be sure to enable **Show extracted files when complete**.
@@ -48,7 +50,7 @@ This product can be downloaded for free and allows a 60 day free trial.
 A personal-use license can be purchased for $60.
 Pending receipt of the license key, the software fully functions, but with a license warning notice.
 
-Download the REAPER software from here: **<https://www.reaper.fm/>**
+Download the 32-bit Windows version of the REAPER software from here: **<https://www.reaper.fm/>**
 
 ### Using the Tuboid plug-in within REAPER
 
@@ -117,15 +119,18 @@ Tuboid emulates the following vacuum tube circuit found in the pre-amplifier sta
 
 The triode vacuum tube to the lower left of the diagram is the primary amplification element.
 
-The triode vacumm tube to the upper right of the diagram provides _negative feedback_ to the input signal when the primary amplifier tube is reaching its voltage saturation level.
+The triode vacumm tube to the upper right of the diagram provides _negative feedback_ to the input signal when the primary amplifier tube is approaching its voltage saturation level.
 
 This negative feedback partially reduces the input signal to prevent the output signal from being _hard limited_ (clipped).
-This effected is known as _soft limiting_.
+This partial reduction effect is known as _soft limiting_.
 
 The effect of this negative feedback voltage is typically stronger for the positive voltage side of the input audio signal than for the negative voltage side.
+(This positive/negative asymmetry results from the _grid voltage bias_ of the **[triode](https://en.wikipedia.org/wiki/Triode
+)** vacuum tubes.)
 
 Analysis of this positive vs. negative asymmetry reveals a distortion effect that contains more _even harmonics_ (overtones) than _odd harmonics_ which would occur with a symmetric feedback circuit.
-Even harmonics provide a more pleasing audio effect than odd harmonics.
+Even harmonics are often considered to provide a more pleasing audio effect than odd harmonics.
+(For details see this **[Wikipedia article on Harmonic Series](https://en.wikipedia.org/wiki/Harmonic_series_(music))**.)
 
 The Tuboid configuration parameters relate to the feedback aspects of this circuit as follows:
 
@@ -222,9 +227,17 @@ This solution file contains a **Tuboid-app** sub-project and the **Tuboid-vst3**
 The **Tuboid-app** sub-project acts as a standalone host for the Tuboid plug-in.
 Run this project within Visual Studio to debug the startup logic for the Tuboid plug-in and to test or debug the logic that reacts to changes in the parameter sliders.
 
-The post-build steps for the **Tuboid-vst** sub-project include copying the resulting DLL file (named as **Tuboid.vst3**) to the standard system folder **C:\\Program Files (x86)\\Common Files\\VST3**
+The post-build steps for the **Tuboid-vst3** sub-project include copying the resulting DLL file (named as **Tuboid.vst3**) to the standard 32-bit system folder **C:\\Program Files (x86)\\Common Files\\VST3**
 
 Since this is a protected folder tree, this step only succeeds if you start Visual Studio via the **Run as administrator** option by right-clicking on the Visual Studio Start menu item (or desktop icon). 
+
+#### 64-bit support
+
+You can build a 64-bit version of the **Tuboid** plugin.
+
+Within Visual Studio, use the Configuration Manager to change the **Active Solution Platform** from **Win32** to **x64** and then Clean and Build the solution.
+
+The post-build steps for the **Tuboid-vst3** sub-project include copying the resulting DLL file (named as **Tuboid.vst3**) to the standard 64-bit system folder **C:\\Program Files\\Common Files\\VST3**
 
 #### VST 2 support
 
@@ -237,6 +250,7 @@ If you have an existing license for the VST 2 SDK you can use this **Tuboid-with
 - **aeffect.h**
 - **aeffectx.h**
 
+The post-build steps for the **Tuboid-vst2** sub-project include copying the resulting **Tuboid.dll** file to the standard 32-bit system folder **C:\\Program Files (x86)\\Steinberg\\VstPlugins** or the standard 64-bit system folder **C:\\Program Files\\Steinberg\\VstPlugins**
 
 
 ## Additional Documentation
