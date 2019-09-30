@@ -1,5 +1,5 @@
 /*
-    Copyright © 2019 Rick Rutt
+	Copyright © 2019 Rick Rutt
 	Tuboid Algorithm Copyright © 2008 Tom Rutt
 
 	This file is part of Tuboid.
@@ -24,9 +24,15 @@
 #include "resource.h"
 #include <string>
 
-const int kNumPrograms = 1;
-
 const double kLogarithmConstant = 588.0;
+
+const int kNumPrograms = 7;  // Number of MakePreset calls.
+
+const double kDefaultGain = 411.0;
+const double kDefaultSquashPositive = 0.0;
+const double kDefaultSquashNegative = 0.0;
+const double kDefaultThresholdPositive = 0.496;
+const double kDefaultThresholdNegative = 0.696;
 
 enum EParams
 {
@@ -81,19 +87,24 @@ Tuboid::Tuboid(IPlugInstanceInfo instanceInfo)
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kGain)->InitDouble("Gain", 0.0, 0.0, 1000.0, 1.0, "1 to 50");
+  //GetParam(kGain)->InitDouble("Gain", 0.0, 0.0, 1000.0, 1.0, "1 to 50");
+  GetParam(kGain)->InitDouble("Gain", kDefaultGain, 0.0, 1000.0, 1.0, "1 to 50");
   GetParam(kGain)->SetShape(1.0);
 
-  GetParam(kSquashPositive)->InitDouble("Squash Positive", 0.0, 0.0, 1000.0, 1.0, "1 to 50");
+  //GetParam(kSquashPositive)->InitDouble("Squash Positive", 0.0, 0.0, 1000.0, 1.0, "1 to 50");
+  GetParam(kSquashPositive)->InitDouble("Squash Positive", kDefaultSquashPositive, 0.0, 1000.0, 1.0, "1 to 50");
   GetParam(kSquashPositive)->SetShape(1.0);
 
-  GetParam(kSquashNegative)->InitDouble("Squash Negative", 0.0, 0.0, 1000.0, 1.0, "1 to 50");
+  //GetParam(kSquashNegative)->InitDouble("Squash Negative", 0.0, 0.0, 1000.0, 1.0, "1 to 50");
+  GetParam(kSquashNegative)->InitDouble("Squash Negative", kDefaultSquashNegative, 0.0, 1000.0, 1.0, "1 to 50");
   GetParam(kSquashNegative)->SetShape(1.0);
 
-  GetParam(kThresholdPositive)->InitDouble("Threshold Positive", 1.0, 0.0, 1.0, 0.001, "0 to 1");
+  //GetParam(kThresholdPositive)->InitDouble("Threshold Positive", 1.0, 0.0, 1.0, 0.001, "0 to 1");
+  GetParam(kThresholdPositive)->InitDouble("Threshold Positive", kDefaultThresholdPositive, 0.0, 1.0, 0.001, "0 to 1");
   GetParam(kThresholdPositive)->SetShape(1.0);
 
-  GetParam(kThresholdNegative)->InitDouble("Threshold Negative", 1.0, 0.0, 1.0, 0.001, "0 to 1");
+  //GetParam(kThresholdNegative)->InitDouble("Threshold Negative", 1.0, 0.0, 1.0, 0.001, "0 to 1");
+  GetParam(kThresholdNegative)->InitDouble("Threshold Negative", kDefaultThresholdNegative, 0.0, 1.0, 0.001, "0 to 1");
   GetParam(kThresholdNegative)->SetShape(1.0);
 
   mpGraphics = MakeGraphics(this, kWidth, kHeight);
@@ -179,11 +190,21 @@ Tuboid::Tuboid(IPlugInstanceInfo instanceInfo)
 
   AttachGraphics(mpGraphics);
 
-  //MakePreset("preset 1", ... );
-  MakeDefaultPreset((char *) "-", kNumPrograms);
+  //MakeDefaultPreset((char *) "-", kNumPrograms);
+  CreatePresets();
 }
 
 Tuboid::~Tuboid() {}
+
+void Tuboid::CreatePresets() {
+	MakePreset("warm", kDefaultGain, kDefaultSquashPositive, kDefaultSquashNegative, kDefaultThresholdPositive, kDefaultThresholdNegative);
+	MakePreset("cool", 177.0, 280.5, 0.0, 0.301, 0.696);
+	MakePreset("clean", 0.0, 0.0, 0.0, 1.0, 1.0);
+	MakePreset("mild", 250.0, 500.0, 500.0, 0.5, 0.5);
+	MakePreset("moderate", 500.0, 500.0, 500.0, 0.5, 0.5);
+	MakePreset("heavy", 750.0, 500.0, 500.0, 0.5, 0.5);
+	MakePreset("extreme", 1000.0, 500.0, 500.0, 0.5, 0.5);
+}
 
 void Tuboid::ProcessDoubleReplacing(
 	double** inputs,
