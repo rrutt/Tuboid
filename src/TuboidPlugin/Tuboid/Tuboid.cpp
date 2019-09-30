@@ -24,6 +24,8 @@
 #include "resource.h"
 #include <string>
 
+const std::string kVersionText = "Version 1.0.1";
+
 const double kLogarithmConstant = 588.0;
 
 const int kNumPrograms = 7;  // Number of MakePreset calls.
@@ -53,6 +55,12 @@ enum ELayout
   kGraphY = 350,
   kGraphWidth = 200,
   kGraphHeight = 200,
+
+  kVersionX = 300,
+  kVersionY = 330,
+  kVersionWidth = 200,
+  kVersionHeight = 30,
+  kVersionFontSize = 20,
 
   kFaderX = 73,
   kFaderYBase = 78,
@@ -110,6 +118,16 @@ Tuboid::Tuboid(IPlugInstanceInfo instanceInfo)
   mpGraphics = MakeGraphics(this, kWidth, kHeight);
   //pGraphics->AttachPanelBackground(&COLOR_RED);
   mpGraphics->AttachBackground(PANEL_BACKGROUND_ID, PANEL_BACKGROUND_FN);
+
+  mTextVersion =
+	  new ITextControl(
+		  this,
+		  IRECT(
+			  kVersionX, kVersionY,
+			  kVersionX + kVersionWidth, kVersionY + kVersionHeight),
+		  new IText(kVersionFontSize, 0, 0, IText::kStyleNormal, IText::kAlignFar),
+		  kVersionText.c_str());
+  mpGraphics->AttachControl(mTextVersion);
 
   IBitmap fader = mpGraphics->LoadIBitmap(IFADERCONTROL_HORIZ_ID, IFADERCONTROL_HORIZ_FN);
 
