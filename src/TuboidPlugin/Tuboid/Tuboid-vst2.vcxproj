@@ -172,7 +172,7 @@ copy /y "$(TargetPath)" "$(VST2_32_PATH)\Tuboid.dll"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST2 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST2_64_PATH)\Tuboid.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST2_64_PATH)\Tuboid64.dll") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST2 Binary to VST2 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -217,7 +217,7 @@ copy /y "$(TargetPath)" "$(VST2_32_PATH)\Tuboid.dll"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST2 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST2_64_PATH)\Tuboid.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST2_64_PATH)\Tuboid64.dll") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST2 Binary to VST2 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
