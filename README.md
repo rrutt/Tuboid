@@ -31,7 +31,7 @@ Tuboid Algorithm Copyright © 2008 Tom Rutt
 
 ### Deployment
 
-These steps are for the 32-bit Windows version of the **Tuboid** plug-in.
+#### 32-bit Windows version
 
 - Download the **[Tuboid-setup.zip](./Tuboid-setup.zip)** file from this GitHub project.
 - Open the folder where you saved the ZIP in Windows file Explorer.
@@ -40,7 +40,18 @@ These steps are for the 32-bit Windows version of the **Tuboid** plug-in.
 - Right-click the **Install-Tuboid-VST3.bat** file and select **Run as administrator** from the pop-up menu.
 - When the Windows Command Processor prompts **Do you want to allow this app to make changes to your device?** select **Yes**.
 - While the setup script runs, it will periodically prompt **Press any key to continue . . .**  Press the Space bar to proceed to the next step in the script, or else close the Command Prompt window to abort the script.
-- The setup script copies the **Tuboid.vst3** plug-in file to the standard system folder for VST 3 plug-ins.
+- The setup script copies the **Tuboid.vst3** plug-in file to the standard system folder for 32-bit VST 3 plug-ins.
+
+#### 64-bit Windows version
+
+- Download the **[Tuboid64-setup.zip](./Tuboid64-setup.zip)** file from this GitHub project.
+- Open the folder where you saved the ZIP in Windows file Explorer.
+- Right-click the **Tuboid64-setup.zip** file and select **Extract All...** from the pop-up menu.  Be sure to enable **Show extracted files when complete**.
+- Open the additional **Tuboid64-setup** sub-folder in Windows file Explorer.
+- Right-click the **Install-Tuboid64-VST3.bat** file and select **Run as administrator** from the pop-up menu.
+- When the Windows Command Processor prompts **Do you want to allow this app to make changes to your device?** select **Yes**.
+- While the setup script runs, it will periodically prompt **Press any key to continue . . .**  Press the Space bar to proceed to the next step in the script, or else close the Command Prompt window to abort the script.
+- The setup script copies the **Tuboid64.vst3** plug-in file to the standard system folder for 64-bit VST 3 plug-ins.
 
 ### Compatible audit editing software: REAPER
 
@@ -50,7 +61,7 @@ This product can be downloaded for free and allows a 60 day free trial.
 A personal-use license can be purchased for $60.
 Pending receipt of the license key, the software fully functions, but with a license warning notice.
 
-Download the 32-bit Windows version of the REAPER software from here: **<https://www.reaper.fm/>**
+Download the 32-bit Windows and/or the 64-bit version of the REAPER software for Windows from here: **<https://www.reaper.fm/>**
 
 ### Using the Tuboid plug-in within REAPER
 
@@ -79,7 +90,7 @@ Select **VST3** in the left area of the dialog, then select the **Tuboid** plug-
 
 ![REAPER Add FX](img/REAPER-Add-FX.png?raw=true "REAPER Add FX")
 
-The Tuboid user-interace appears:
+The Tuboid user-interface appears:
 
 ![REAPER Tuboid UI](img/REAPER-Tuboid-UI.png?raw=true "REAPER Tuboid UI")
 
@@ -204,7 +215,7 @@ Here are some other approaches to emulation or simulation of vacuum tube guitar 
 ## Development Enviromment
 
 - Windows 10
-- Microsoft Visual Studio 2019 Community Edition
+- **[Microsoft Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/vs/)**
   - Workload: **Desktop development with C++**
   - Include Optional: **C++ MFC for v142 build tools (x86 & x64)**
 
@@ -233,11 +244,11 @@ Since this is a protected folder tree, this step only succeeds if you start Visu
 
 #### 64-bit support
 
-You can build a 64-bit version of the **Tuboid** plugin.
+You can build the 64-bit version of the **Tuboid** plugin.
 
 Within Visual Studio, use the Configuration Manager to change the **Active Solution Platform** from **Win32** to **x64** and then Clean and Build the solution.
 
-The post-build steps for the **Tuboid-vst3** sub-project include copying the resulting DLL file (named as **Tuboid.vst3**) to the standard 64-bit system folder **C:\\Program Files\\Common Files\\VST3**
+The post-build steps for the **Tuboid-vst3** sub-project include copying the resulting DLL file (named as **Tuboid.vst3**) to the standard 64-bit system folder **C:\\Program Files\\Common Files\\VST3** with the destination name **Tuboid64.vst3**
 
 #### VST 2 support
 

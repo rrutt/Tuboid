@@ -50,6 +50,7 @@ private:
   double mThresholdPositive;
   double mThresholdNegative;
 
+  ITextControl* mTextVersion;
   ITextControl* mTextGain;
   ITextControl* mTextSquashPositive;
   ITextControl* mTextSquashNegative;
