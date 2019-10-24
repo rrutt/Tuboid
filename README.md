@@ -79,7 +79,7 @@ Select **VST3** in the left area of the dialog, then select the **Tuboid** plug-
 
 ![REAPER Add FX](img/REAPER-Add-FX.png?raw=true "REAPER Add FX")
 
-The Tuboid user-interace appears:
+The Tuboid user-interface appears:
 
 ![REAPER Tuboid UI](img/REAPER-Tuboid-UI.png?raw=true "REAPER Tuboid UI")
 
@@ -204,7 +204,7 @@ Here are some other approaches to emulation or simulation of vacuum tube guitar 
 ## Development Enviromment
 
 - Windows 10
-- Microsoft Visual Studio 2019 Community Edition
+- **[Microsoft Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/vs/)**
   - Workload: **Desktop development with C++**
   - Include Optional: **C++ MFC for v142 build tools (x86 & x64)**
 
